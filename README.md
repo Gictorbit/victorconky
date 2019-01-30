@@ -16,20 +16,26 @@ linuxMedium
 linuxLarg
 
 https://drive.google.com/open?id=1S_uGgAQemgEZXbJQTlUXiQu6GOUJxQ6O
+
 https://drive.google.com/open?id=1qPyCfn3hOCgAGx8t5a-dTYcjeZTNutcI
 
 To use the widget set below, you can use two methods to install:
 1. Install with installer script
 2. Manual confinement (recomended)
+
 I propose the second method (manual configurations)
+
 Note: First of all, make sure the conky-manager is installed
+
 The first method:
 Run the installer script
 
 The second method:
+
 1.Download the whole repository and Install fonts inside the fonts folder
 
 Copy the victorConky folder to this path
+
 ~/.conky 
 
 now you can choos your favorite conky from conky-manager software
