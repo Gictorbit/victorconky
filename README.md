@@ -1,0 +1,2 @@
+# victorconky
+conky for conkymanager
