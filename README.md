@@ -20,7 +20,7 @@ https://drive.google.com/open?id=1S_uGgAQemgEZXbJQTlUXiQu6GOUJxQ6O
 https://drive.google.com/open?id=1qPyCfn3hOCgAGx8t5a-dTYcjeZTNutcI
 
 To use the widget set below, you can use two methods to install:
-1. Install with installer script
+1. Install with installer script (Tested on gnome)
 2. Manual confinement (recomended)
 
 I propose the second method (manual configurations)
