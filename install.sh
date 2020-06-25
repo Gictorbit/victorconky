@@ -1,44 +1,56 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-echo "hello"
-echo "welcom to installing victorConky..."
-
-if [ ! -d ~/.conky ];then
-        echo "There is no .conky directory in home..."
-        echo "making directory .conky..."
-        mkdir .conky 
-fi      
-echo "directory <<~/.conky>> Found..."
+function main(){
+    conkyPath="$HOME/.conky"
+    victorConky="$HOME/.conky/victorConky"
     
-if [ -d victorConky ];then
-        echo "victorConky directory Found..."
-        echo "copying Files..."
-        sleep 2
-        mkdir ~/.conky/victorConky 
-        cp -r victorConky ~/.conky/victorConky
+    createDirs
+    copyFiles
+    installFonts
 
-        if [ -d fonts ];then
-                echo "font directory Found..."
-                if [ ! -d ~/.fonts ];then
-                    mkdir ~/.fonts
-                fi    
-                echo "installing fonts..."
-                ls fonts | xargs -IX cp fonts/X ~/.fonts
-            else
-                echo "font directory notFound..."
-                echo "visit https://www.github.com/Vict0rBit and download it..."
-                exit
-        fi
-        echo "all files copy successfully..."
-        echo "would you open conky manager? [y,N]"
-        read answer
-        if [ "$answer" == "y" || "$answer" == "Y" ];then
-            conky-manager
-        fi
-        exit
+}
+
+function createDirs(){
+    #create conky dir if not exist
+    mkdir -p "$conkyPath"
+
+    #create victorConky dir if not exist and delete it if exist
+    if [[ -d "$victorConky" ]];then
+        rm -rf "$victorConky"
+        echo "victorConky directory is already exists deleting..."
+    fi
+    echo "create $victorConky..."
+    mkdir "$victorConky"
+}
+
+function copyFiles(){
+    filesDir="$PWD/victorConky"
+    
+    if [[ -d "$filesDir" ]];then
+        echo "copy files..."
+        cp "$filesDir"/* "$victorConky"
     else
-        echo "victorConky directory NotFound..."
-        echo "visit https://www.github.com/Vict0rBit and download it..."
-        exit    
-fi        
+        echo "victorConky dir not Found"
+        echo "visit https://www.github.com/Gictorbit/victorconky and download it"
+        exit 1
+    fi
+}
+
+function installFonts(){
+    conkyFonts="$PWD/fonts"
+    fontDir="$HOME/.fonts"
+
+    mkdir -p "$fontDir"
+
+    if [[ -d "$conkyFonts" ]];then
+        echo "install fonts..."
+        cp "$conkyFonts"/* "$fontDir"
+    else
+        echo "fonts directory not Found"
+        echo "visit https://www.github.com/Gictorbit/victorconky and download it"
+        exit 1
+    fi
+}
+
+main
 
